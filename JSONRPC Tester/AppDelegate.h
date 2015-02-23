@@ -13,6 +13,8 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSTextField *urlField;
+@property (assign) IBOutlet NSTextField *httpHeaderKey;
+@property (assign) IBOutlet NSTextField *httpHeaderValue;
 @property (assign) IBOutlet NSTextField *method;
 @property (assign) IBOutlet NSButton *submitButton;
 @property (assign) JSONRPCService* svc;

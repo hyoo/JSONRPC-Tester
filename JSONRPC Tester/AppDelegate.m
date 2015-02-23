@@ -14,6 +14,8 @@
 
 @synthesize window = _window;
 @synthesize urlField = _urlField;
+@synthesize httpHeaderKey = _httpHeaderKey;
+@synthesize httpHeaderValue = _httpHeaderValue;
 @synthesize method = _method;
 @synthesize submitButton = _submitButton;
 @synthesize svc;
@@ -53,11 +55,13 @@
         
         NSLog(@"params: %@, Object type: %@, content: %@",_params.stringValue, [response class], response);
         
-        NSString *withID = [NSString stringWithFormat:@"%i", [response count]];
+        NSString *withID = [NSString stringWithFormat:@"%lu", (unsigned long)[response count]];
         
         [svc execMethod:_method.stringValue 
               andParams:response 
-                 withID:withID];
+                 withID:withID
+          httpHeaderKey:_httpHeaderKey.stringValue
+        httpHeaderValue:_httpHeaderValue.stringValue];
 
     }
 }

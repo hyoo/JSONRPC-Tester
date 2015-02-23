@@ -30,7 +30,7 @@
 
 -(id) initWithURL:(NSURL*)serviceURL;
 -(id) initWithURL:(NSURL*)serviceURL user:(NSString*)user pass:(NSString*)pass;
--(void) execMethod:(NSString*)methodName andParams:(NSArray*)parameters withID:(NSString*)identificator;
+-(void) execMethod:(NSString*)methodName andParams:(NSArray*)parameters withID:(NSString*)identificator httpHeaderKey:(NSString*)headerKey httpHeaderValue:(NSString*)headerValue;
 
 -(void) cancelRequest;
 

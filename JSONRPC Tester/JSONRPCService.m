@@ -27,7 +27,7 @@
 }
 
 
--(void) execMethod:(NSString*)methodName andParams:(NSArray*)parameters withID:(NSString*)identificator {
+-(void) execMethod:(NSString*)methodName andParams:(NSArray*)parameters withID:(NSString*)identificator httpHeaderKey:(NSString*) headerKey httpHeaderValue:(NSString*) headerValue {
 
 	//RPC
 	NSMutableDictionary* reqDict = [NSMutableDictionary dictionary];
@@ -44,9 +44,10 @@
 	
 	//prepare http body
 	[request setHTTPMethod: @"POST"];
-	[request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+	[request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]] forHTTPHeaderField:@"Content-Length"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:headerValue forHTTPHeaderField:headerKey];
 	[request setHTTPBody: requestData];
 		
 	if (urlConnection != nil) {
